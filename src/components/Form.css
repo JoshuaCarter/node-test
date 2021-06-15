@@ -1,0 +1,18 @@
+
+* {
+    text-align: left;
+    font-size: 1em;
+}
+
+.form {
+    width: 100%;
+}
+
+.userlist {
+    margin-bottom: 60px;
+}
+
+.userform-form * {
+    display: block;
+    margin-bottom: 20px;
+}
