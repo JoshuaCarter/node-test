@@ -1,0 +1,27 @@
+version: "2"
+services:
+  mongo:
+    image: mongo:latest
+    volumes:
+      - ./data/db:/data/db
+    environment:
+      MONGO_USERNAME: admin
+      MONGO_PASSWORD: pass
+  admin:
+    image: mongo-express:latest
+    links:
+      - mongo
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+  app:
+    image: node:latest
+    links:
+      - mongo
+    working_dir: /www
+    volumes:
+      - ./:/www
+    ports:
+      - "8080:5000"
+    command: node ./srv/index.js
